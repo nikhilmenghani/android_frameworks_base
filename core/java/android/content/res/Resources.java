@@ -80,6 +80,7 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.GrowingArrayUtils;
 import com.android.internal.util.Preconditions;
 import com.android.internal.util.XmlUtils;
+import com.android.internal.util.crdroid.PixelLauncherColorCompat;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -1179,6 +1180,7 @@ public class Resources {
      */
     @ColorInt
     public int getColor(@ColorRes int id, @Nullable Theme theme) throws NotFoundException {
+        id = PixelLauncherColorCompat.remapColorResourceId(id);
         final TypedValue value = obtainTempTypedValue();
         try {
             final ResourcesImpl impl = mResourcesImpl;
